@@ -1,14 +1,9 @@
 #!/usr/bin/python3
 def uppercase(str):
-    i = 0
-    ch = ''
-    while len(str) > i:
+    for i in len(str):
         if str[i] >= 'a' and str[i] <= 'z':
-            ch = chr(ord(str[i]) - 32)
+            str = chr(ord(str[i]) - 32)
         else:
-            ch = chr(ord(str[i]))
-        i = i + 1
+            str = chr(ord(str[i]))
         print(ch, end="")
     print("\n", end="")
-uppercase("holberton")
-uppercase("Holberton School 98 Battery street")
