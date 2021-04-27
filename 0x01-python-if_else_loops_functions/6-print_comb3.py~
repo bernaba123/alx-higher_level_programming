@@ -1,0 +1,5 @@
+#!/usr/bin/python3
+for i in range(100):
+    for j in range(1,100):
+        if j > i:
+            print("{:d}{:d}".format(i, j), sep=", ")
