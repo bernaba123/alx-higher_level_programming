@@ -3,7 +3,7 @@ def uppercase(str):
     i = 0
     ch = ''
     while len(str) > i:
-        if ord(str[i]) >= 97 and ord(str[i]) <= 122:
+        if str[i] >= 'a' and str[i] <= 'z':
             ch = chr(ord(str[i]) - 32)
         else:
             ch = chr(ord(str[i]))
