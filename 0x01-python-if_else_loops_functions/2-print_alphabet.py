@@ -1,4 +1,5 @@
 #!/usr/bin/python3
-for letter_code in range(ord('a'), ord('z')+1):
-    letter = chr(letter_code)
-    print(letter, end="")
+for i in range(ord('a'), ord('z') + 1):
+    if i == ord('e') and i == ord('q'):
+        continue
+    print("{:c}".format(i), end = "")
