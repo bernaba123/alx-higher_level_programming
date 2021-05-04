@@ -8,5 +8,5 @@ def new_in_list(my_list, idx, element):
     elif idx >= len(my_list):
         return cp
     else:
-        my_list[idx] = element
-        print("{:d}".format(my_list))
+        cp[idx] = element
+        return cp
