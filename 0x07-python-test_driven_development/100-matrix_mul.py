@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Contains the matrix_mul function
-"""
+"""Contains the matrix_mul function"""
 
 
 def matrix_mul(m_a, m_b):
