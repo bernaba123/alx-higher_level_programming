@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""blocked class module"""
+
+
 class LockedClass:
-    """prevent the dynamic creation of attributes"""
+    """object prevents dynamic attribute"""
+
     __slots__ = ['first_name']
