@@ -1,25 +1,22 @@
 #!/usr/bin/python3
-""" Script that takes arguments and displays
-all values in the states table
-where name matches the argument.
-But this time, write one that is safe from MySQL injections! """
-import MySQLdb
-import sys
+"""
+lists all states with a name starting with N (upper N)
+from the database hbtn_0e_0_usa
+"""
 
-if __name__ == '__main__':
 
-    mysql_c = MySQLdb.connect(
-        user=sys.argv[1],
-        password=sys.argv[2],
-        database=sys.argv[3],
-        host="localhost",
-        port=3306)
+if __name__ == "__main__":
+    import MySQLdb
+    from sys import argv
 
-    i = mysql_c.cursor()
-    i.execute("SELECT * FROM states \
-               WHERE name=%s \
-               ORDER BY states.id ASC", (sys.argv[4],))
-    for row in i.fetchall():
+    db = MySQLdb.connect(
+        host="localhost", port=3306, user=argv[1], passwd=argv[2],
+        db=argv[3], charset="utf8")
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name= %s ORDER BY id ASC", (
+        argv[4], ))
+    query_rows = cur.fetchall()
+    for row in query_rows:
         print(row)
-    i.close()
-    mysql_c.close()
+    cur.close()
+    db.close()

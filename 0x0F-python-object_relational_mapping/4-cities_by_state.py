@@ -1,23 +1,24 @@
 #!/usr/bin/python3
-""" Script that lists all cities from the database """
-import MySQLdb
-import sys
+"""
+lists all states with a name starting with N (upper N)
+from the database hbtn_0e_0_usa
+"""
 
-if __name__ == '__main__':
 
-    mysql_c = MySQLdb.connect(
-        user=sys.argv[1],
-        password=sys.argv[2],
-        database=sys.argv[3],
-        host="localhost",
-        port=3306)
+if __name__ == "__main__":
+    import MySQLdb
+    from sys import argv
 
-    i = mysql_c.cursor()
-    i.execute("SELECT cities.id, cities.name, \
-               states.name FROM cities \
-               INNER JOIN states \
-               ON states.id=cities.state_id;")
-    for row in i.fetchall():
+    db = MySQLdb.connect(
+        host="localhost", port=3306, user=argv[1], passwd=argv[2],
+        db=argv[3], charset="utf8")
+    cur = db.cursor()
+    cur.execute("SELECT cities.id, cities.name, states.name "
+                "FROM cities "
+                "INNER JOIN states "
+                "ON states.id=cities.state_id ORDER BY cities.id ", )
+    query_rows = cur.fetchall()
+    for row in query_rows:
         print(row)
-    i.close()
-    mysql_c.close()
+    cur.close()
+    db.close()
